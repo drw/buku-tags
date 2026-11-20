@@ -1,12 +1,12 @@
 """Get the tags from the local buku database of bookmarks and output
 them in a list sorted by increasing tag use frequency."""
 
-import buku
-
 import os
 from pprint import pprint
 
+import buku
 from rich.console import Console
+
 console = Console()
 
 
@@ -51,7 +51,7 @@ def print_tag_wall(sorted_tags: list[tuple]):
 db = buku.BukuDb()
 _, count_by_tag = db.get_tag_all()
 sorted_tags = sorted(count_by_tag.items(), key = lambda x: x[1])
-pprint(sorted_tags) # Print list of tags sorted by increasing count.
+pprint(sorted_tags)  # Print list of tags sorted by increasing count.
 max_column = os.get_terminal_size().columns
 print("=" * max_column)
 print_tag_wall(sorted_tags)
